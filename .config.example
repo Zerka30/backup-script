@@ -1,0 +1,49 @@
+backup:
+    retention: 90
+    log: true
+    archive: true
+
+    excludes:
+      extensions: 
+
+    folders:
+      - name: test-backup
+        path: /home/backup/test-backup
+
+    databases:
+        - name: test-backup-database
+          host: <YOUR_IP>
+          port: <YOUR_PORT>
+          user: <YOUR_USER>
+          password: <YOUR_PASSWORD>
+          database: 
+            - name: <DB_NAME>
+
+    destination:
+        s3:
+            enable: true
+            endpoint: https://s3.pub1.infomaniak.cloud
+            bucket: backup
+            key:
+                access: <YOUR_ACCESS_KEY>
+                secret: <YOUR_SECRET_KEY>
+        kdrive:
+            enable: true
+            endpoint: https://<YOUR_DRIVE_ID>.connect.drive.infomaniak.com
+            folder: ""
+            user: <YOUR_EMAIL>
+            password: <YOUR_PASSWORD>
+        swissbackup:
+            enable: false
+        
+notify:
+    enable: true
+    gotify:
+        enable: true
+        url: <GOTIFY_URL>
+        token: <GOTIFY_TOKEN>
+    mail:
+        enable: true
+    discord:
+        enable: false
+        webhook: ""
